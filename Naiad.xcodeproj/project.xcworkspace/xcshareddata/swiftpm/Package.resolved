@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "elva",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/L1MeN9Yu/Elva.git",
+      "state" : {
+        "revision" : "fa091666bf724a9507138abce505f54aee07e919",
+        "version" : "2.1.2"
+      }
+    }
+  ],
+  "version" : 2
+}

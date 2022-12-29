@@ -1,0 +1,543 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A879CC9629527AF0002002CB /* NaiadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CC9529527AF0002002CB /* NaiadApp.swift */; };
+		A879CC9829527AF0002002CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CC9729527AF0002002CB /* ContentView.swift */; };
+		A879CC9A29527AF1002002CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A879CC9929527AF1002002CB /* Assets.xcassets */; };
+		A879CC9E29527AF1002002CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A879CC9D29527AF1002002CB /* Preview Assets.xcassets */; };
+		A879CCA929527BC2002002CB /* Upscaler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCA829527BC2002002CB /* Upscaler.swift */; };
+		A879CCB32953802B002002CB /* GeneratorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCB22953802B002002CB /* GeneratorResult.swift */; };
+		A879CCB52953809C002002CB /* SampleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCB42953809C002002CB /* SampleInput.swift */; };
+		A879CCB9295381F1002002CB /* UNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCB8295381F1002002CB /* UNet.swift */; };
+		A879CCBB295384FD002002CB /* MPSGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCBA295384FD002002CB /* MPSGraph.swift */; };
+		A879CCBD29538513002002CB /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCBC29538513002002CB /* CGImage.swift */; };
+		A879CCC12954C817002002CB /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCC02954C817002002CB /* Scheduler.swift */; };
+		A879CCC32954CC2F002002CB /* TextGuidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCC22954CC2F002002CB /* TextGuidance.swift */; };
+		A879CCC52954CC70002002CB /* Tokeniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCC42954CC70002002CB /* Tokeniser.swift */; };
+		A879CCC72954D124002002CB /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCC62954D124002002CB /* URL.swift */; };
+		A879CCC929550906002002CB /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCC829550906002002CB /* Decoder.swift */; };
+		A879CCCB2955090E002002CB /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCCA2955090E002002CB /* Encoder.swift */; };
+		A879CCCF2955176B002002CB /* Diffuser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCCE2955176B002002CB /* Diffuser.swift */; };
+		A879CCD329553A06002002CB /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCD229553A06002002CB /* FileHelper.swift */; };
+		A879CCD729554F6D002002CB /* StableDiffusion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCD629554F6D002002CB /* StableDiffusion.swift */; };
+		A879CCD929554FC2002002CB /* DiffusionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879CCD829554FC2002002CB /* DiffusionImageView.swift */; };
+		A891D59D2958E21300571F55 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891D59C2958E21300571F55 /* DownloadView.swift */; };
+		A891D59F2958EF1600571F55 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891D59E2958EF1600571F55 /* NSTextField.swift */; };
+		A8D6C19A2956437200390E14 /* RealEsrgan.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C1992956437200390E14 /* RealEsrgan.mlmodel */; };
+		A8D6C19C29564B2300390E14 /* ContentView_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C19B29564B2300390E14 /* ContentView_macOS.swift */; };
+		A8D6C19E29564B2C00390E14 /* ContentView_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C19D29564B2C00390E14 /* ContentView_iOS.swift */; };
+		A8D6C1A029566F7600390E14 /* Naiad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C19F29566F7600390E14 /* Naiad.swift */; };
+		A8D6C1A82957B93400390E14 /* ZSTD in Frameworks */ = {isa = PBXBuildFile; productRef = A8D6C1A72957B93400390E14 /* ZSTD */; };
+		A8D6C1AA2957B94600390E14 /* TarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C1A92957B94600390E14 /* TarHelper.swift */; };
+		A8D6C1AC2957B96800390E14 /* TarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C1AB2957B96800390E14 /* TarError.swift */; };
+		A8D6C1B22957F23200390E14 /* ModelHosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C1B12957F23200390E14 /* ModelHosts.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A879CC9229527AF0002002CB /* Naiad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Naiad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A879CC9529527AF0002002CB /* NaiadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiadApp.swift; sourceTree = "<group>"; };
+		A879CC9729527AF0002002CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A879CC9929527AF1002002CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A879CC9B29527AF1002002CB /* Naiad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Naiad.entitlements; sourceTree = "<group>"; };
+		A879CC9D29527AF1002002CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A879CCA829527BC2002002CB /* Upscaler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upscaler.swift; sourceTree = "<group>"; };
+		A879CCB22953802B002002CB /* GeneratorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorResult.swift; sourceTree = "<group>"; };
+		A879CCB42953809C002002CB /* SampleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInput.swift; sourceTree = "<group>"; };
+		A879CCB8295381F1002002CB /* UNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNet.swift; sourceTree = "<group>"; };
+		A879CCBA295384FD002002CB /* MPSGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSGraph.swift; sourceTree = "<group>"; };
+		A879CCBC29538513002002CB /* CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImage.swift; sourceTree = "<group>"; };
+		A879CCC02954C817002002CB /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		A879CCC22954CC2F002002CB /* TextGuidance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextGuidance.swift; sourceTree = "<group>"; };
+		A879CCC42954CC70002002CB /* Tokeniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokeniser.swift; sourceTree = "<group>"; };
+		A879CCC62954D124002002CB /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		A879CCC829550906002002CB /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		A879CCCA2955090E002002CB /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		A879CCCE2955176B002002CB /* Diffuser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diffuser.swift; sourceTree = "<group>"; };
+		A879CCD229553A06002002CB /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		A879CCD629554F6D002002CB /* StableDiffusion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableDiffusion.swift; sourceTree = "<group>"; };
+		A879CCD829554FC2002002CB /* DiffusionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffusionImageView.swift; sourceTree = "<group>"; };
+		A891D59C2958E21300571F55 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		A891D59E2958EF1600571F55 /* NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
+		A8D6C1992956437200390E14 /* RealEsrgan.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RealEsrgan.mlmodel; sourceTree = "<group>"; };
+		A8D6C19B29564B2300390E14 /* ContentView_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_macOS.swift; sourceTree = "<group>"; };
+		A8D6C19D29564B2C00390E14 /* ContentView_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_iOS.swift; sourceTree = "<group>"; };
+		A8D6C19F29566F7600390E14 /* Naiad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Naiad.swift; sourceTree = "<group>"; };
+		A8D6C1A12957A03E00390E14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A8D6C1A92957B94600390E14 /* TarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarHelper.swift; sourceTree = "<group>"; };
+		A8D6C1AB2957B96800390E14 /* TarError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarError.swift; sourceTree = "<group>"; };
+		A8D6C1B12957F23200390E14 /* ModelHosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelHosts.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A879CC8F29527AF0002002CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8D6C1A82957B93400390E14 /* ZSTD in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A879CC8929527AF0002002CB = {
+			isa = PBXGroup;
+			children = (
+				A879CC9429527AF0002002CB /* Naiad */,
+				A879CC9329527AF0002002CB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A879CC9329527AF0002002CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A879CC9229527AF0002002CB /* Naiad.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A879CC9429527AF0002002CB /* Naiad */ = {
+			isa = PBXGroup;
+			children = (
+				A8D6C1A12957A03E00390E14 /* Info.plist */,
+				A879CCA729527B90002002CB /* Core */,
+				A879CCAF29537E7B002002CB /* DataTypes */,
+				A879CCA629527B8B002002CB /* Extensions */,
+				A879CCA529527B86002002CB /* Helpers */,
+				A879CCAC29527C6F002002CB /* Models */,
+				A879CCA429527B7E002002CB /* Views */,
+				A879CC9529527AF0002002CB /* NaiadApp.swift */,
+				A879CC9929527AF1002002CB /* Assets.xcassets */,
+				A879CC9B29527AF1002002CB /* Naiad.entitlements */,
+				A879CC9C29527AF1002002CB /* Preview Content */,
+			);
+			path = Naiad;
+			sourceTree = "<group>";
+		};
+		A879CC9C29527AF1002002CB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A879CC9D29527AF1002002CB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A879CCA429527B7E002002CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A879CC9729527AF0002002CB /* ContentView.swift */,
+				A8D6C19D29564B2C00390E14 /* ContentView_iOS.swift */,
+				A8D6C19B29564B2300390E14 /* ContentView_macOS.swift */,
+				A879CCD829554FC2002002CB /* DiffusionImageView.swift */,
+				A891D59C2958E21300571F55 /* DownloadView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A879CCA529527B86002002CB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A879CCD229553A06002002CB /* FileHelper.swift */,
+				A8D6C1A92957B94600390E14 /* TarHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A879CCA629527B8B002002CB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A879CCBC29538513002002CB /* CGImage.swift */,
+				A879CCBA295384FD002002CB /* MPSGraph.swift */,
+				A891D59E2958EF1600571F55 /* NSTextField.swift */,
+				A879CCC62954D124002002CB /* URL.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A879CCA729527B90002002CB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A8D6C19F29566F7600390E14 /* Naiad.swift */,
+				A879CCD629554F6D002002CB /* StableDiffusion.swift */,
+				A879CCA829527BC2002002CB /* Upscaler.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A879CCAC29527C6F002002CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A879CCC829550906002002CB /* Decoder.swift */,
+				A879CCCE2955176B002002CB /* Diffuser.swift */,
+				A879CCCA2955090E002002CB /* Encoder.swift */,
+				A8D6C1992956437200390E14 /* RealEsrgan.mlmodel */,
+				A879CCC02954C817002002CB /* Scheduler.swift */,
+				A879CCC22954CC2F002002CB /* TextGuidance.swift */,
+				A879CCC42954CC70002002CB /* Tokeniser.swift */,
+				A879CCB8295381F1002002CB /* UNet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A879CCAF29537E7B002002CB /* DataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				A879CCB22953802B002002CB /* GeneratorResult.swift */,
+				A8D6C1B12957F23200390E14 /* ModelHosts.swift */,
+				A879CCB42953809C002002CB /* SampleInput.swift */,
+				A8D6C1AB2957B96800390E14 /* TarError.swift */,
+			);
+			path = DataTypes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A879CC9129527AF0002002CB /* Naiad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A879CCA129527AF1002002CB /* Build configuration list for PBXNativeTarget "Naiad" */;
+			buildPhases = (
+				A879CC8E29527AF0002002CB /* Sources */,
+				A879CC8F29527AF0002002CB /* Frameworks */,
+				A879CC9029527AF0002002CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Naiad;
+			packageProductDependencies = (
+				A8D6C1A72957B93400390E14 /* ZSTD */,
+			);
+			productName = Naiad;
+			productReference = A879CC9229527AF0002002CB /* Naiad.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A879CC8A29527AF0002002CB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					A879CC9129527AF0002002CB = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = A879CC8D29527AF0002002CB /* Build configuration list for PBXProject "Naiad" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A879CC8929527AF0002002CB;
+			packageReferences = (
+				A8D6C1A62957B93400390E14 /* XCRemoteSwiftPackageReference "Elva" */,
+			);
+			productRefGroup = A879CC9329527AF0002002CB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A879CC9129527AF0002002CB /* Naiad */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A879CC9029527AF0002002CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A879CC9E29527AF1002002CB /* Preview Assets.xcassets in Resources */,
+				A879CC9A29527AF1002002CB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A879CC8E29527AF0002002CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8D6C19E29564B2C00390E14 /* ContentView_iOS.swift in Sources */,
+				A8D6C1B22957F23200390E14 /* ModelHosts.swift in Sources */,
+				A879CCC929550906002002CB /* Decoder.swift in Sources */,
+				A879CCCF2955176B002002CB /* Diffuser.swift in Sources */,
+				A879CCC12954C817002002CB /* Scheduler.swift in Sources */,
+				A8D6C1AC2957B96800390E14 /* TarError.swift in Sources */,
+				A879CCA929527BC2002002CB /* Upscaler.swift in Sources */,
+				A879CCC32954CC2F002002CB /* TextGuidance.swift in Sources */,
+				A879CCC52954CC70002002CB /* Tokeniser.swift in Sources */,
+				A879CCBB295384FD002002CB /* MPSGraph.swift in Sources */,
+				A891D59D2958E21300571F55 /* DownloadView.swift in Sources */,
+				A879CCBD29538513002002CB /* CGImage.swift in Sources */,
+				A879CCCB2955090E002002CB /* Encoder.swift in Sources */,
+				A879CCC72954D124002002CB /* URL.swift in Sources */,
+				A8D6C1AA2957B94600390E14 /* TarHelper.swift in Sources */,
+				A8D6C19A2956437200390E14 /* RealEsrgan.mlmodel in Sources */,
+				A879CCB32953802B002002CB /* GeneratorResult.swift in Sources */,
+				A879CC9829527AF0002002CB /* ContentView.swift in Sources */,
+				A879CCD329553A06002002CB /* FileHelper.swift in Sources */,
+				A879CC9629527AF0002002CB /* NaiadApp.swift in Sources */,
+				A879CCD929554FC2002002CB /* DiffusionImageView.swift in Sources */,
+				A8D6C1A029566F7600390E14 /* Naiad.swift in Sources */,
+				A8D6C19C29564B2300390E14 /* ContentView_macOS.swift in Sources */,
+				A879CCB52953809C002002CB /* SampleInput.swift in Sources */,
+				A891D59F2958EF1600571F55 /* NSTextField.swift in Sources */,
+				A879CCD729554F6D002002CB /* StableDiffusion.swift in Sources */,
+				A879CCB9295381F1002002CB /* UNet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A879CC9F29527AF1002002CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A879CCA029527AF1002002CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A879CCA229527AF1002002CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Naiad/Naiad.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Naiad/Preview Content\"";
+				DEVELOPMENT_TEAM = 927QBR5K88;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Naiad/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Give permission to save generated artwork to your library";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = Lilliana.Naiad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A879CCA329527AF1002002CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Naiad/Naiad.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Naiad/Preview Content\"";
+				DEVELOPMENT_TEAM = 927QBR5K88;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Naiad/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Give permission to save generated artwork to your library";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lilliana.Naiad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A879CC8D29527AF0002002CB /* Build configuration list for PBXProject "Naiad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A879CC9F29527AF1002002CB /* Debug */,
+				A879CCA029527AF1002002CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A879CCA129527AF1002002CB /* Build configuration list for PBXNativeTarget "Naiad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A879CCA229527AF1002002CB /* Debug */,
+				A879CCA329527AF1002002CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A8D6C1A62957B93400390E14 /* XCRemoteSwiftPackageReference "Elva" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/L1MeN9Yu/Elva.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A8D6C1A72957B93400390E14 /* ZSTD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8D6C1A62957B93400390E14 /* XCRemoteSwiftPackageReference "Elva" */;
+			productName = ZSTD;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A879CC8A29527AF0002002CB /* Project object */;
+}
