@@ -36,7 +36,6 @@
 		A8D6C1A82957B93400390E14 /* ZSTD in Frameworks */ = {isa = PBXBuildFile; productRef = A8D6C1A72957B93400390E14 /* ZSTD */; };
 		A8D6C1AA2957B94600390E14 /* TarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C1A92957B94600390E14 /* TarHelper.swift */; };
 		A8D6C1AC2957B96800390E14 /* TarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C1AB2957B96800390E14 /* TarError.swift */; };
-		A8D6C1B22957F23200390E14 /* ModelHosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6C1B12957F23200390E14 /* ModelHosts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +70,6 @@
 		A8D6C1A12957A03E00390E14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A8D6C1A92957B94600390E14 /* TarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarHelper.swift; sourceTree = "<group>"; };
 		A8D6C1AB2957B96800390E14 /* TarError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarError.swift; sourceTree = "<group>"; };
-		A8D6C1B12957F23200390E14 /* ModelHosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelHosts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				A879CCB22953802B002002CB /* GeneratorResult.swift */,
-				A8D6C1B12957F23200390E14 /* ModelHosts.swift */,
 				A879CCB42953809C002002CB /* SampleInput.swift */,
 				A8D6C1AB2957B96800390E14 /* TarError.swift */,
 			);
@@ -227,7 +224,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					A879CC9129527AF0002002CB = {
 						CreatedOnToolsVersion = 14.0;
@@ -273,7 +270,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8D6C19E29564B2C00390E14 /* ContentView_iOS.swift in Sources */,
-				A8D6C1B22957F23200390E14 /* ModelHosts.swift in Sources */,
 				A879CCC929550906002002CB /* Decoder.swift in Sources */,
 				A879CCCF2955176B002002CB /* Diffuser.swift in Sources */,
 				A879CCC12954C817002002CB /* Scheduler.swift in Sources */,
@@ -338,6 +334,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -396,6 +393,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -420,8 +418,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Naiad/Naiad.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Naiad/Preview Content\"";
 				DEVELOPMENT_TEAM = 927QBR5K88;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -444,10 +444,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = Lilliana.Naiad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -462,8 +463,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Naiad/Naiad.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Naiad/Preview Content\"";
 				DEVELOPMENT_TEAM = 927QBR5K88;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -486,9 +489,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Lilliana.Naiad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;

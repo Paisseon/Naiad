@@ -11,6 +11,9 @@ struct DownloadView: View {
     @Environment(\.colorScheme) var currentMode
     @State private var message: String = "Model is downloading, please wait warmly..."
     @State private var count: Int = 0
+    @State private var isRunning: Bool = false
+    @State private var tasks: Double = 0x543
+    @State private var finished: Double = 0
     
     private let ram: UInt64 = ProcessInfo.processInfo.physicalMemory / 0x40000000
     
@@ -20,92 +23,94 @@ struct DownloadView: View {
                 .opacity(0.5)
                 .background(.regularMaterial)
             
-            VStack {
-                ProgressView()
-                    .task {
-                        await download()
+            if isRunning {
+                VStack {
+                    ProgressView(value: finished / tasks)
+                        .padding([.leading, .trailing])
+                        .frame(maxWidth: 250)
+                    
+                    Text(message)
+                        .padding()
+                }
+            } else {
+                VStack {
+                    Text(
+                        "Please ensure you have at least 3 GB of storage free for the model to download" +
+                        (ram > 6 ? "" : "\nRAM is detected to be \(ram) GB. If this is correct, Naiad may not work on your device.")
+                    )
+                        .padding()
+                    
+                    Button("Download") {
+                        isRunning = true
+                        
+                        Task {
+                            await download()
+                        }
                     }
-                
-                Text(message)
-                    .padding()
+                }
             }
         }
     }
     
+    // Download occurs in 6 parts to mitigate a diskwrite crash on iOS devices
+    
     private func download() async {
-        if ram < 6 {
-            await MainActor.run {
-                message = "Not enough RAM to proceed! Naiad requires 6GB or higher"
-            }
-            
-            return
-        }
-        
-        #if os(iOS)
         do {
-            let urls: [URL] = ram >= 8 ?
-            [
-                URL(string: "https://dl.dropboxusercontent.com/s/ivopgu5e7lq9irm/Major_Part_0.tzst")!,
-                URL(string: "https://dl.dropboxusercontent.com/s/gxv5c9hf54sekux/Major_Part_1.tzst")!,
-                URL(string: "https://dl.dropboxusercontent.com/s/zjnkncpu5i9f2z0/Major_Part_2.tzst")!,
-                URL(string: "https://dl.dropboxusercontent.com/s/ybkst1bnu1ilw9s/Major_Part_3.tzst")!,
-                URL(string: "https://dl.dropboxusercontent.com/s/tgbi58s7jnjp4eg/Major_Part_4.tzst")!
-            ]
-            :
-            [
-                URL(string: "https://dl.dropboxusercontent.com/s/uf93p1r819ryty5/Minor_Part_0.tzst")!,
-                URL(string: "https://dl.dropboxusercontent.com/s/d68enl1395af0t1/Minor_Part_1.tzst")!,
-                URL(string: "https://dl.dropboxusercontent.com/s/lwwql7j9tyswqn1/Minor_Part_2.tzst")!,
+            try await FileHelper.makeDirectory(at: FileHelper.weights)
+            
+            let urlParts: [URL] = [
+                URL(string: "https://dl.dropboxusercontent.com/s/lyhi2z4tnae692w/Part_0.tzst")!,
+                URL(string: "https://dl.dropboxusercontent.com/s/1ik8dvyyc0h77ho/Part_1.tzst")!,
+                URL(string: "https://dl.dropboxusercontent.com/s/x2r5qca3qhr1gc7/Part_2.tzst")!,
+                URL(string: "https://dl.dropboxusercontent.com/s/9h2u6f8pxq2qjwf/Part_3.tzst")!,
+                URL(string: "https://dl.dropboxusercontent.com/s/0q3b4qdzqijmkpr/Part_4.tzst")!,
+                URL(string: "https://dl.dropboxusercontent.com/s/ds88dyfl1fazu39/Part_5.tzst")!
             ]
             
-            do {
-                try await FileHelper.makeDirectory(at: FileHelper.weights)
+            for url in urlParts {
+                await MainActor.run {
+                    message = "[\(count + 1)/6] Model is downloading, please wait warmly..."
+                }
                 
-                for url in urls {
-                    await MainActor.run {
-                        message = "[\(count + 1)/\(urls.count)] Model is downloading, please wait warmly..."
-                    }
-                    
-                    let dlURL: URL = try await URLSession.shared.download(from: url).0
-                    try await FileHelper.move(from: dlURL, to: FileHelper.docs.slash("Part_\(count).tzst"))
-                    let extURL: URL = try await FileHelper.extract(from: FileHelper.docs.slash("Part_\(count).tzst"))
-                    
-                    let contents: [URL] = try FileManager.default.contentsOfDirectory(
-                        at: extURL.slash("Part_\(count)"),
-                        includingPropertiesForKeys: [.isRegularFileKey]
+                let dlURL: URL = try await URLSession.shared.download(from: url).0
+                try await FileHelper.move(from: dlURL, to: FileHelper.docs.slash("Part_\(count).tzst"))
+                let extURL: URL = try await FileHelper.extract(from: FileHelper.docs.slash("Part_\(count).tzst"))
+                var localCount: Int = 0
+                
+                let contents: [URL] = try FileManager.default.contentsOfDirectory(
+                    at: extURL.slash("Part_\(count)"),
+                    includingPropertiesForKeys: [.isRegularFileKey]
+                )
+                
+                for content in contents {
+                    try await FileHelper.move(
+                        from: content,
+                        to: FileHelper.weights.slash(content.lastPathComponent)
                     )
                     
-                    for content in contents {
-                        try await FileHelper.move(
-                            from: content,
-                            to: FileHelper.weights.slash(content.lastPathComponent)
-                        )
-                    }
+                    localCount += 1
                     
-                    count += 1
-                    sleep(5)
+                    if localCount >= 15 {
+                        await MainActor.run {
+                            self.finished += 15.0
+                        }
+                        
+                        localCount = 0
+                    }
                 }
                 
-                await MainActor.run {
-                    Naiad.shared.doesModelExist = access(FileHelper.weights.slash("betas.bin").path, F_OK) == 0
-                }
-            } catch {
-                message = "\(error)"
+                count += 1
+                sleep(5)
             }
-        }
-        #else
-        do {
-            let url: URL = .init(string: ram >= 8 ? "https://dl.dropboxusercontent.com/s/3029u2wd7xopf9j/Major_Full.tzst" : "https://dl.dropboxusercontent.com/s/xl64h95ri34m6e4/Minor_Full.tzst")!
-            let dlURL: URL = try await URLSession.shared.download(from: url).0
-            try await FileHelper.move(from: dlURL, to: FileHelper.docs.slash("Model.tzst"))
-            try await FileHelper.extract(from: FileHelper.docs.slash("Model.tzst"))
             
-            Naiad.shared.doesModelExist = access(FileHelper.weights.slash("betas.bin").path, F_OK) == 0
+            await MainActor.run {
+                isRunning = false
+                Naiad.shared.doesModelExist = access(FileHelper.weights.slash("temb_coefficients_fp32.bin").path, F_OK) == 0
+            }
         } catch {
             await MainActor.run {
                 message = error.localizedDescription
             }
         }
-        #endif
     }
 }

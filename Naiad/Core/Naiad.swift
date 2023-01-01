@@ -19,7 +19,7 @@ final class Naiad: ObservableObject {
     @Published var inputImage: CGImage? = nil
     @Published var doesModelExist: Bool = access(FileHelper.weights.slash("betas.bin").path, F_OK) == 0
     
-    private let diffusion: StableDiffusion
+    let diffusion: StableDiffusion
     private let model: URL = FileHelper.weights
     
     private init() {
@@ -34,16 +34,32 @@ final class Naiad: ObservableObject {
             isRunning = true
         }
         
-        await diffusion.generate(input: input) { result in
+        if let inImage: CGImage = inputImage,
+           let upscaled: CGImage = Upscaler.shared.upscale(inImage)
+        {
             await MainActor.run {
-                if result.progress >= 0.97,
-                   let image: CGImage = result.image,
-                   let upscaled: CGImage = Upscaler.shared.upscale(image)
-                {
+                image = upscaled
+                progress = 1.0
+                stage = "Success!"
+                inputImage = nil
+                isRunning = false
+            }
+            
+            return
+        }
+        
+        await diffusion.generate(input: input) { result in
+            if result.progress >= 0.97,
+               let resImage: CGImage = result.image,
+               let upscaled: CGImage = Upscaler.shared.upscale(resImage)
+            {
+                await MainActor.run {
                     self.image = upscaled
                     self.progress = 1.0
-                    self.stage = "Done!"
-                } else {
+                    self.stage = "Success!"
+                }
+            } else {
+                await MainActor.run {
                     self.image = result.image
                     self.progress = result.progress
                     self.stage = result.stage

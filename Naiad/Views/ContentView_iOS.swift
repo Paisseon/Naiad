@@ -16,7 +16,7 @@ struct ContentView_iOS: View {
     @State private var guidance: Double = 11.0
     @State private var isNSFW: Bool = false
     
-    private let naiPrompt: String = "masterpiece, best quality, high definition, good anatomy, "
+    private let naiPrompt: String = "masterpiece, best quality, high definition, good anatomy, 8k, "
     private let naiAntiPrompt: String = "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, artist name, bad eyes, distorted limbs, missing arm, extra arm, missing leg, extra leg, missing foot, extra foot, blurry face, bad face, missing eye, extra eye, extra hand, missing hand, "
     
     var body: some View {
@@ -50,6 +50,7 @@ struct ContentView_iOS: View {
                         }
                     } else if naiad.stage.contains("iteration") {
                         naiad.isRunning = false
+                        naiad.diffusion.isRunning = false
                     }
                 }
             }
@@ -81,11 +82,5 @@ struct ContentView_iOS: View {
                     .padding()
             }
         }
-    }
-}
-
-struct ContentView_iOS_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView_iOS()
     }
 }

@@ -34,12 +34,14 @@ final class StableDiffusion {
 
     var width: NSNumber = 64
     var height: NSNumber = 64
-    var running: Bool = false
+    var isRunning: Bool = false
 
     func generate(
         input: SampleInput,
         completion: @escaping (GeneratorResult) async -> Void
     ) async {
+        isRunning = true
+        
         // 1. Tokenisation
 
         await completion(GeneratorResult(image: input.image, progress: 0, stage: "Tokenising..."))
@@ -67,6 +69,11 @@ final class StableDiffusion {
             scheduler: scheduler,
             completion: completion
         )
+        
+        guard isRunning else {
+            await completion(GeneratorResult(image: nil, progress: 0.0, stage: "Cancelled"))
+            return
+        }
 
         // 4. Decoding
 
@@ -210,6 +217,10 @@ final class StableDiffusion {
         let actualTimeSteps: [Int] = scheduler.timeSteps(strength: input.strength)
 
         actualTimeSteps.enumerated().forEach { index, timeStep in
+            guard isRunning else {
+                return
+            }
+            
             autoreleasepool {
                 let tick: CFAbsoluteTime = CFAbsoluteTimeGetCurrent()
                 let temb: MPSGraphTensorData = scheduler.run(with: commandQueue, timeStep: timeStep)

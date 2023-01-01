@@ -31,9 +31,6 @@ struct DiffusionImageView: View {
                 .resizable()
                 .aspectRatio(1.0, contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 24))
-                .onTapGesture {
-                    naiad.image?.save()
-                }
                 .padding()
         } else {
             RoundedRectangle(cornerRadius: 24)
