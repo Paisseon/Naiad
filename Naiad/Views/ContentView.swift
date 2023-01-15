@@ -7,12 +7,20 @@
 
 import SwiftUI
 
+#if os(iOS)
+import UIKit
+#endif
+
 struct ContentView: View {
     @StateObject private var naiad: Naiad = .shared
     var body: some View {
         ZStack {
             #if os(iOS)
-            ContentView_iOS()
+            if UIDevice.current.orientation.isLandscape {
+                ContentView_macOS()
+            } else {
+                ContentView_iOS()
+            }
             #else
             ContentView_macOS()
             #endif

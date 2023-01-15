@@ -36,7 +36,7 @@ struct DownloadView: View {
                 VStack {
                     Text(
                         "Please ensure you have at least 3 GB of storage free for the model to download" +
-                        (ram > 6 ? "" : "\nRAM is detected to be \(ram) GB. If this is correct, Naiad may not work on your device.")
+                        (ram >= 7 ? "" : "\n⚠️ Local diffusion is extremely resource intensive and requires 8 GB of RAM.\nYou have \(ram) GB, which may lead to crashes whilst using Naiad. Proceed at your own risk.")
                     )
                         .padding()
                     
@@ -69,7 +69,7 @@ struct DownloadView: View {
             
             for url in urlParts {
                 await MainActor.run {
-                    message = "[\(count + 1)/6] Model is downloading, please wait warmly..."
+                    message = "[\(min(count + 1, 6))/6] Model is downloading, please wait warmly..."
                 }
                 
                 let dlURL: URL = try await URLSession.shared.download(from: url).0
@@ -109,7 +109,7 @@ struct DownloadView: View {
             }
         } catch {
             await MainActor.run {
-                message = error.localizedDescription
+                message = "Error!\n" + error.localizedDescription
             }
         }
     }
